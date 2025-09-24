@@ -6,12 +6,18 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "NODE_ENV=production node server.js",
+    "start:pm2": "pm2 start server.js --name next-https --update-env --time",
+    "restart:pm2": "pm2 restart next-https || pm2 start server.js --name next-https --update-env --time",
+    "stop:pm2": "pm2 stop next-https || true",
+    "logs:pm2": "pm2 logs next-https",
+    "pm2:save": "pm2 save",
     "lint": "eslint"
   },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "next": "15.5.4",
+    "pm2": "^5"
   },
   "devDependencies": {
     "typescript": "^5",

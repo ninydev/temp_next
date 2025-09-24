@@ -45,6 +45,40 @@ In production, HTTP (80) strictly redirects to HTTPS (443).
 
 If you manage startup commands yourself, ensure they run inside the `src/` folder (where `package.json` lives), or change your container’s working directory accordingly.
 
+## Run in background (so it keeps running after you logout)
+We added PM2 (a Node.js process manager). You can start the server in the background and keep it running even after you close SSH:
+
+Inside the `src/` directory:
+
+```
+# install deps and build
+npm ci
+npm run build
+
+# start in background with PM2
+npm run start:pm2
+
+# (optional) save the PM2 process list to restore on container restart
+npm run pm2:save
+
+# view logs
+npm run logs:pm2
+
+# restart/stop
+npm run restart:pm2
+npm run stop:pm2
+```
+
+Also available: an ecosystem file `src/ecosystem.config.cjs`. You can run it with:
+
+```
+npx pm2 start ecosystem.config.cjs
+```
+
+Notes:
+- In Azure “git to container” scenarios, the container should run your process in the foreground automatically. If you start the app manually over SSH, use PM2 to detach it from your shell.
+- If the container itself restarts, you may need to re-run `pm2 start` unless you configure a startup script in the container image. `pm2 save` stores the process list; restoring on boot requires `pm2 startup`, which might need additional privileges not present in minimal containers.
+
 ## Environment variables (optional)
 Set any of these in your container if you need custom values:
 
