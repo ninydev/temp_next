@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack  --host 0.0.0.0 --port 3000",
+    "dev": "next dev --turbopack -H 0.0.0.0 -p 3000",
     "build": "next build --turbopack",
-    "start": "next start --host 0.0.0.0 --port 3000",
+    "start": "next start -H 0.0.0.0 -p 3000",
     "start:https": "NODE_ENV=production node server.js",
     "start:pm2": "pm2 start server.js --name next-https --update-env --time",
     "restart:pm2": "pm2 restart next-https || pm2 start server.js --name next-https --update-env --time",
