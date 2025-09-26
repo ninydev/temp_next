@@ -9,8 +9,8 @@ const PORT_HTTP = Number(process.env.PORT_HTTP || 80);
 const PORT_HTTPS = Number(process.env.PORT_HTTPS || 443);
 
 // Default Let's Encrypt paths (can be overridden via env)
-const SSL_KEY_PATH = process.env.SSL_KEY_PATH || '/etc/letsencrypt/live/pv32itstep.northeurope.cloudapp.azure.com/privkey.pem';
-const SSL_CERT_PATH = process.env.SSL_CERT_PATH || '/etc/letsencrypt/live/pv32itstep.northeurope.cloudapp.azure.com/fullchain.pem';
+const SSL_KEY_PATH = process.env.SSL_KEY_PATH || '/etc/letsencrypt/live/pv32.northeurope.cloudapp.azure.com/fullchain.pem';
+const SSL_CERT_PATH = process.env.SSL_CERT_PATH || '/etc/letsencrypt/live/pv32.northeurope.cloudapp.azure.com/fullchain.pem';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, hostname: HOST, port: PORT_HTTPS });
