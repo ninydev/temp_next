@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
+    "start:https": "NODE_ENV=production node server.js",
     "start:pm2": "pm2 start server.js --name next-https --update-env --time",
     "restart:pm2": "pm2 restart next-https || pm2 start server.js --name next-https --update-env --time",
     "stop:pm2": "pm2 stop next-https || true",
     "logs:pm2": "pm2 logs next-https",
     "pm2:save": "pm2 save",
+
     "lint": "eslint"
   },
   "dependencies": {
